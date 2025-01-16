@@ -1,0 +1,21 @@
+/* PART 1 */
+@import 'vars.css';
+@import 'barchart.css';
+
+/* Insert style rules for the barchart's top level svg */
+svg.barchart {
+
+    border: solid 1px #333; 
+
+}
+
+/* Insert style rules for the barcharts's bars */
+svg.barchart rect.bar{
+    fill:#3F94D3;
+    stroke:#003C71;
+    stroke-width:2px;
+    
+}
+
+/* PART 5 */
+/* Add styles for your donut and line charts */
