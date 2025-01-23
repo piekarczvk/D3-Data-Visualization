@@ -74,11 +74,8 @@ scatter.render(citiesElevation);
 // we will explain it further in the next lab 
 let citiesElevation1= cities.map(d=>[d.city, d.alt]); 
 
-
-
 let scale1=d3.scaleLinear();
 
-console.log(this.data);
 console.log(d3.selectAll('circle.dot').nodes());
 
 // PART 3 & 4 - See in BarChart.js
@@ -87,9 +84,13 @@ console.log(d3.selectAll('circle.dot').nodes());
 
 
 import DonutChart from './DonutChart.js';
-import LineChart from './LineChart.js';
+ 
 
-let citiesPop = cities.map(d=>[d.city, d.pop]); 
+let donut1 = new DonutChart('div#donut1',800,500,[10,40,45,20]);
+
+donut1.render(citiesElevation);
+
+import LineChart from './LineChart.js';
 
 let historicPop = [ 
     [2000,451000],[2001,454000],[2002,457000],[2003,460000], 
@@ -100,7 +101,9 @@ let historicPop = [
     [2020,537000],[2021,543000],[2022,548000],[2023,554000]
 ];
 
-// DonutChart.render(citiesPop);
+let line1 = new LineChart('div#line1',800,500,[10,40,45,100]);
 
-// LineChart.render(historicPop);
+line1.render(historicPop);
+
+
 
