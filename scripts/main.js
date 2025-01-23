@@ -57,9 +57,34 @@ bar1.render(citiesElevation);
 
 let scale=d3.scaleLinear();
 
+
+//scater plot
+import ScatterPlot from './ScatterPlot.js'; 
+
+let scatter = new ScatterPlot('div#scatter',800,500,[10,40,45,20]);
+
+scatter.render(citiesElevation);
+
+
+
+
+
+// this line transforms the cities dataset in the generic format 
+// that BarChart expects: [[k, v], ...] 
+// we will explain it further in the next lab 
+let citiesElevation1= cities.map(d=>[d.city, d.alt]); 
+
+
+
+let scale1=d3.scaleLinear();
+
+console.log(this.data);
+console.log(d3.selectAll('circle.dot').nodes());
+
 // PART 3 & 4 - See in BarChart.js
 
 // PART 5 - Complete DonutChart.js and LineChart.js
+
 
 import DonutChart from './DonutChart.js';
 import LineChart from './LineChart.js';
@@ -79,6 +104,3 @@ let historicPop = [
 
 // LineChart.render(historicPop);
 
-let app = d3.select('div#app');
-let sec1=app.append('div');
-let pars=sec1.selectAll('p');

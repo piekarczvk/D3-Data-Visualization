@@ -11,6 +11,8 @@ export default class BarChart{
     data; // internal data 
 
     // PART 3 - add scale properties
+    axisX; axisY;labelX; labelY; 
+    scaleX; scaleY;
 
     // PART 4 - add axis properties
 
@@ -38,6 +40,11 @@ export default class BarChart{
             .attr('transform', `translate(${this.margin[2]},${this.height-this.margin[1]})`);
         this.axisY=this.svg.append('g')
             .attr('transform', `translate(${this.margin[2]},${this.margin[0]})`)
+        
+        this.labelX=this.svg.append('text')
+            .attr('transform',`translate(${this.width/2},${this.height})`)
+            .style('text-anchor','middle')
+            .attr('dy',-5);
 
     } 
 
@@ -65,7 +72,7 @@ export default class BarChart{
         let charHeight=this.height-this.margin[0]-this.margin[1];
 
         let rangeX=[0, charWidth];
-        let rangeY=[chartHeight,0];
+        let rangeY=[charHeight,0];
 
         let domainX=this.data.map(d=>d[0]);
         let domainY=[0,d3.max(this.data, d=>d[1])];
@@ -77,6 +84,12 @@ export default class BarChart{
 
     #updateAxes(){
         // PART 4 - complete method
+        let axisGenX=d3.axisBottom(this.scaleX),
+            axisGenY=d3.axisLeft(this.scaleY);
+        
+        this.axisX.call(axisGenX);
+        this.axisY.call(axisGenY);
+
     }
     
 
@@ -92,5 +105,10 @@ export default class BarChart{
         this.#updateScales();
         return this; // to allow chaining 
     } 
+
+    setLabels(labelX='categories',labelY='values'){
+        this.labelX.text(labelX);
+        this.labelY.text(labelY);
+    }
 
 } 

@@ -8,4 +8,5 @@ export default class BubbleChart{
     // bubles can be rendered with circle (instead of rect)
 
     // a circle has 3 important attribute: cx (center x), cy (center y) and r (radius)
+    
 }
